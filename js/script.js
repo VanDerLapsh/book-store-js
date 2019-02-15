@@ -4,17 +4,18 @@ ready(function(){
 
   const burgerBtn = document.querySelector('.burger');
   const mainNav = document.querySelector('.main-nav');
-    burgerBtn.onclick = function() {
-      mainNav.classList.add('main-nav--open');
-      burgerBtn.classList.add('burger--close');
+  
+  burgerBtn.onclick = function() {
+    mainNav.classList.add('main-nav--open');
+    burgerBtn.classList.add('burger--close');
 
-      let burgerBtnClose = document.querySelector('.burger--close');
+    let burgerBtnClose = document.querySelector('.burger--close');
 
-      burgerBtnClose.onclick = function() {
-      mainNav.classList.remove('main-nav--open');
-      burgerBtn.classList.remove('burger--close');
-      };
+    burgerBtnClose.onclick = function() {
+    mainNav.classList.remove('main-nav--open');
+    burgerBtn.classList.remove('burger--close');
     };
+  };
 
 
   // ВНИМАНИЕ!
