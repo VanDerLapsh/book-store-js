@@ -6,17 +6,16 @@ ready(function(){
   const mainNav = document.querySelector('.main-nav');
   
   burgerBtn.onclick = function() {
-    mainNav.classList.add('main-nav--open');
-    burgerBtn.classList.add('burger--close');
-
-    let burgerBtnClose = document.querySelector('.burger--close');
-
-    burgerBtnClose.onclick = function() {
-    mainNav.classList.remove('main-nav--open');
-    burgerBtn.classList.remove('burger--close');
-    };
+    mainNav.classList.toggle('main-nav--open');
+    burgerBtn.classList.toggle('burger--close');
   };
 
+  const filterToggle = document.querySelector('.filters__trigger');
+  const filterMenu = document.querySelector('.filters');
+
+  filterToggle.onclick = function() {
+    filterMenu.classList.toggle('filters--open');
+  };
 
   // ВНИМАНИЕ!
   // Нижеследующий код (кастомный селект и выбор диапазона цены) работает
