@@ -7,7 +7,7 @@ ready(function(){
   
   burgerBtn.addEventListener('click', openMenu);
 
-  function menuToggle() {
+  function openMenu() {
     mainNav.classList.toggle('main-nav--open');
     burgerBtn.classList.toggle('burger--close');
   };
@@ -17,9 +17,24 @@ ready(function(){
 
   filterToggle.addEventListener('click', openFilter);
 
-  function filterToggle() {
+  function openFilter() {
     filterMenu.classList.toggle('filters--open');
   };
+
+  const template = document.querySelector('#book-template');
+  const templateFragment = document.createDocumentFragment();
+  
+  for (i=0; i < 10; i++) {
+
+  const bookTemplate = template.content.cloneNode(true);
+
+  bookTemplate.querySelector('.card__title').innerHTML = books[i].name;
+  bookTemplate.querySelector('.card__price').innerHTML = books[i].price;
+  bookTemplate.querySelector('.card__img').src = 'img/books/' + books[i].uri + '.jpg';
+
+  templateFragment.appendChild(bookTemplate);
+  };
+
 
   // ВНИМАНИЕ!
   // Нижеследующий код (кастомный селект и выбор диапазона цены) работает
