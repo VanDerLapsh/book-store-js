@@ -7,7 +7,7 @@ ready(function(){
   
   burgerBtn.addEventListener('click', openMenu);
 
-  function openMenu() {
+  function menuToggle() {
     mainNav.classList.toggle('main-nav--open');
     burgerBtn.classList.toggle('burger--close');
   };
@@ -15,9 +15,9 @@ ready(function(){
   const filterToggle = document.querySelector('.filters__trigger');
   const filterMenu = document.querySelector('.filters');
 
-  filterToggle.addEventListener('click', openFilter)
+  filterToggle.addEventListener('click', openFilter);
 
-  function openFilter() {
+  function filterToggle() {
     filterMenu.classList.toggle('filters--open');
   };
 
