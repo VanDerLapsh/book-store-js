@@ -29,7 +29,7 @@ ready(function(){
     const bookTemplate = template.content.cloneNode(true);
 
     bookTemplate.querySelector('.card__title').innerHTML = books[i].name;
-    bookTemplate.querySelector('.card__price').innerHTML = books[i].price;
+    bookTemplate.querySelector('.card__price').innerHTML = books[i].price + ' ₽';
     bookTemplate.querySelector('.card__img').src = 'img/books/' + books[i].uri + '.jpg';
 
     templateFragment.appendChild(bookTemplate);
