@@ -22,7 +22,7 @@ ready(function(){
   };
 
   const template = document.querySelector('#book-template');
-  const templateFragment = document.createDocumentFragment();
+  const fragment = document.createDocumentFragment();
   
   for (i=0; i < 10; i++) {
 
@@ -32,10 +32,33 @@ ready(function(){
     bookTemplate.querySelector('.card__price').innerHTML = books[i].price + ' ₽';
     bookTemplate.querySelector('.card__img').src = 'img/books/' + books[i].uri + '.jpg';
 
-    templateFragment.appendChild(bookTemplate);
+    fragment.appendChild(bookTemplate);
   };
 
-  document.querySelector('.catalog__books-list').appendChild(templateFragment);
+  document.querySelector('.catalog__books-list').appendChild(fragment);
+
+// Отслеживаем событие (отправки формы)
+
+  const filtersForm = document.forms.filter;
+
+  filtersForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    generateFilters();
+  });
+
+  function generateFilters () {
+    const bookName = filtersForm.elements['book-name'].value;
+    console.log(bookName)
+  };
+  console.log();
+
+
+// функция принимающая массив, применяем .filter, записываем в новый массив
+
+// выводим результат в .catalog__books-list
+
+
+
 
   // ВНИМАНИЕ!
   // Нижеследующий код (кастомный селект и выбор диапазона цены) работает
