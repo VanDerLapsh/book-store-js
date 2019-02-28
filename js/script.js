@@ -44,6 +44,7 @@ ready(function(){
   filtersForm.addEventListener('submit', function (e) {
     e.preventDefault();
     generateFilters();
+    filterPrice();
   });
 
 
@@ -56,6 +57,18 @@ ready(function(){
     });
   console.log(filteredBook);
   };
+
+  function filterPrice () {
+    let minPrice = filtersForm.elements['price-from'].value;
+    let maxPrice = filtersForm.elements['price-to'].value;
+
+    console.log(minPrice)
+
+    let filterArrPrice = books.filter(function (minPrice, maxPrice) {
+      return minPrice.price >= 800 && maxPrice.price < 1000;
+    });
+    console.log(filterArrPrice);
+  }
 
 // выводим результат в .catalog__books-list
 
