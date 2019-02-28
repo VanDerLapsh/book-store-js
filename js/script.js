@@ -46,14 +46,16 @@ ready(function(){
     generateFilters();
   });
 
-  function generateFilters () {
-    const bookName = filtersForm.elements['book-name'].value;
-    console.log(bookName)
-  };
-  console.log();
-
 
 // функция принимающая массив, применяем .filter, записываем в новый массив
+
+  function generateFilters () {
+    let bookName = filtersForm.elements['book-name'].value;
+    let filteredBook = books.filter(function (bookName) {
+      return bookName.name == bookName;
+    });
+  console.log(filteredBook);
+  };
 
 // выводим результат в .catalog__books-list
 
