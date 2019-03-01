@@ -4,7 +4,8 @@ ready(function(){
 
   const burgerBtn = document.querySelector('.burger');
   const mainNav = document.querySelector('.main-nav');
-  
+  const catalog = document.querySelector('.catalog__books-list');
+
   burgerBtn.addEventListener('click', openMenu);
 
   function openMenu() {
@@ -23,9 +24,8 @@ ready(function(){
 
   const template = document.querySelector('#book-template');
   const fragment = document.createDocumentFragment();
-  
-  for (i=0; i < 10; i++) {
 
+  for (i=0; i < 10; i++) {
     const bookTemplate = template.content.cloneNode(true);
 
     bookTemplate.querySelector('.card__title').innerHTML = books[i].name;
@@ -35,7 +35,7 @@ ready(function(){
     fragment.appendChild(bookTemplate);
   };
 
-  document.querySelector('.catalog__books-list').appendChild(fragment);
+  catalog.appendChild(fragment);
 
 // Отслеживаем событие (отправки формы)
 
@@ -52,8 +52,9 @@ ready(function(){
 
   function generateFilters () {
     let bookName = filtersForm.elements['book-name'].value;
-    let filteredBook = books.filter(function (bookName) {
-      return bookName.name == bookName;
+    let filteredBook = books.filter(function (el) {
+      // console.log(el.name);
+      return el.name == bookName;
     });
   console.log(filteredBook);
   };
@@ -62,10 +63,10 @@ ready(function(){
     let minPrice = filtersForm.elements['price-from'].value;
     let maxPrice = filtersForm.elements['price-to'].value;
 
-    console.log(minPrice)
 
-    let filterArrPrice = books.filter(function (minPrice, maxPrice) {
-      return minPrice.price >= 800 && maxPrice.price < 1000;
+    let filterArrPrice = books.filter(function (el) {
+      return el.price >= minPrice &&
+             el.price < maxPrice;
     });
     console.log(filterArrPrice);
   }
