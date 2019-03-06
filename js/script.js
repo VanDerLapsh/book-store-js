@@ -43,27 +43,32 @@ ready(function(){
 
   filtersForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    generateFilters();
+    
     filterPrice();
+    // renderCards();
   });
 
 
 // функция принимающая массив, применяем .filter, записываем в новый массив
 
   function generateFilters () {
-    let bookName = filtersForm.elements['book-name'].value;
-    let filteredBook = books.filter(function (el) {
-      // console.log(el.name);
-      return el.name == bookName;
+    let bookName = filtersForm.elements['book-name'];
+
+    bookName.addEventListener('input', () => {
+      let filteredBookName = books.filter(item => {
+        let re = new RegExp(bookName.value, `gi`)
+
+        return re.test(item.name);
+      });
+      console.log(filteredBookName)
     });
-  console.log(filteredBook);
   };
+
+  generateFilters();
 
   function filterPrice () {
     let minPrice = filtersForm.elements['price-from'].value;
     let maxPrice = filtersForm.elements['price-to'].value;
-
-
     let filterArrPrice = books.filter(function (el) {
       return el.price >= minPrice &&
              el.price < maxPrice;
@@ -73,6 +78,12 @@ ready(function(){
 
 // выводим результат в .catalog__books-list
 
+  // function renderCards () {
+  //   catalog.innerHTML = ' ';
+  //   filterArrPrice.forEach(function () {
+
+  //   });
+  // }
 
 
 
