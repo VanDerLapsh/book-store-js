@@ -4,28 +4,32 @@ const books = [
     "desc":"",
     "price":697,
     "uri":"klienty-na-vsyu-zhizn",
-    "type":"marketing"
+    "type":"marketing",
+    "new": 1
   },
   {
     "name":"Ценные решения",
     "desc":"Как работать с ценами, чтобы прибыль росла",
     "price":637,
     "uri":"tsennye-resheniya",
-    "type":"marketing"
+    "type":"marketing",
+    "new": 1
   },
   {
     "name":"45 татуировок продавана",
     "desc":"Правила для тех, кто продаёт и управляет продажами",
     "price":676,
     "uri":"45-tatuirovok-prodavana",
-    "type":"business"
+    "type":"business",
+    "new": 1
   },
   {
     "name":"Дневник художника-натуралиста",
     "desc":"Как рисовать животных, птиц, растения и пейзажи",
     "price":1695,
     "uri":"dnevnik-khudozhnika-naturalista",
-    "type":"creativity"
+    "type":"creativity",
+    "new": 1
   },
   {
     "name":"Открытое мышление",

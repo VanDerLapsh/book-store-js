@@ -4,10 +4,11 @@ ready(function(){
 
   const burgerBtn = document.querySelector('.burger');
   const mainNav = document.querySelector('.main-nav');
-  
+  const catalog = document.querySelector('.catalog__books-list');
+
   burgerBtn.addEventListener('click', openMenu);
 
-  function menuToggle() {
+  function openMenu() {
     mainNav.classList.toggle('main-nav--open');
     burgerBtn.classList.toggle('burger--close');
   };
@@ -17,9 +18,84 @@ ready(function(){
 
   filterToggle.addEventListener('click', openFilter);
 
-  function filterToggle() {
+  function openFilter() {
     filterMenu.classList.toggle('filters--open');
   };
+
+  const template = document.querySelector('#book-template');
+  const fragment = document.createDocumentFragment();
+
+  for (i=0; i < 10; i++) {
+    const bookTemplate = template.content.cloneNode(true);
+
+    bookTemplate.querySelector('.card__title').innerHTML = books[i].name;
+    bookTemplate.querySelector('.card__price').innerHTML = books[i].price + ' ₽';
+    bookTemplate.querySelector('.card__img').src = 'img/books/' + books[i].uri + '.jpg';
+
+    fragment.appendChild(bookTemplate);
+  };
+
+  catalog.appendChild(fragment);
+
+// Отслеживаем событие (отправки формы)
+
+  const filtersForm = document.forms.filter;
+
+  filtersForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    filterPrice();
+    // renderCards();
+  });
+
+
+// функция принимающая массив, применяем .filter, записываем в новый массив
+
+  function generateFilters () {
+    let bookName = filtersForm.elements['book-name'];
+
+    bookName.addEventListener('input', () => {
+      let filteredBookName = books.filter(item => {
+        let re = new RegExp(bookName.value, `gi`)
+
+        return re.test(item.name);
+      });
+      console.log(filteredBookName)
+    });
+  };
+
+  generateFilters();
+
+  function filterPrice () {
+    let minPrice = filtersForm.elements['price-from'].value;
+    let maxPrice = filtersForm.elements['price-to'].value;
+    let filterArrPrice = books.filter(function (el) {
+      return el.price >= minPrice &&
+             el.price < maxPrice;
+    });
+
+    console.log(filterArrPrice);
+
+      function renderCards () {
+        catalog.innerHTML = ' ';
+        filterArrPrice.forEach(function (item) {
+          const bookTemplate = template.content.cloneNode(true);
+
+          bookTemplate.querySelector('.card__title').innerHTML = item.name;
+          bookTemplate.querySelector('.card__price').innerHTML = item.price + ' ₽';
+          bookTemplate.querySelector('.card__img').src = 'img/books/' + item.uri + '.jpg';
+
+          fragment.appendChild(bookTemplate);
+        });
+      catalog.appendChild(fragment);
+      }
+    renderCards();
+  }
+
+// выводим результат в .catalog__books-list
+
+
+
+
 
   // ВНИМАНИЕ!
   // Нижеследующий код (кастомный селект и выбор диапазона цены) работает
