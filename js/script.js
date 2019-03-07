@@ -43,7 +43,6 @@ ready(function(){
 
   filtersForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    
     filterPrice();
     // renderCards();
   });
@@ -73,17 +72,28 @@ ready(function(){
       return el.price >= minPrice &&
              el.price < maxPrice;
     });
+
     console.log(filterArrPrice);
+
+      function renderCards () {
+        catalog.innerHTML = ' ';
+        filterArrPrice.forEach(function (item) {
+          const bookTemplate = template.content.cloneNode(true);
+
+          bookTemplate.querySelector('.card__title').innerHTML = item.name;
+          bookTemplate.querySelector('.card__price').innerHTML = item.price + ' ₽';
+          bookTemplate.querySelector('.card__img').src = 'img/books/' + item.uri + '.jpg';
+
+          fragment.appendChild(bookTemplate);
+        });
+      catalog.appendChild(fragment);
+      }
+    renderCards();
   }
 
 // выводим результат в .catalog__books-list
 
-  // function renderCards () {
-  //   catalog.innerHTML = ' ';
-  //   filterArrPrice.forEach(function () {
 
-  //   });
-  // }
 
 
 
